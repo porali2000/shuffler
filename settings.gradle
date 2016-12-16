@@ -1,0 +1,6 @@
+rootProject.name = 'shuffler'
+include ':models'
+include ':persistence'
+include ':capability'
+include ':restapi'
+

@@ -1,0 +1,51 @@
+group 'com.game.deck'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath('org.springframework.boot:spring-boot-gradle-plugin:1.4.2.RELEASE')
+    }
+}
+
+allprojects {
+
+    apply plugin: 'java'
+    apply plugin: 'application'
+    apply plugin: 'org.springframework.boot'
+
+    sourceCompatibility = 1.8
+    mainClassName = 'com.init.AppBooter'
+
+
+    project.ext {
+        cucumberVersion = '1.2.5'
+        junitVersion = '4.12'
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        compile 'org.springframework.boot:spring-boot-starter-web'
+        compileOnly "org.projectlombok:lombok:1.16.12"
+        testCompile 'junit:junit:' + junitVersion
+        testCompile 'org.springframework.boot:spring-boot-starter-test'
+    }
+}
+
+jar {
+    baseName = 'shuffler'
+    version = '1.0-SNAPSHOT'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.2'
+}
+
+bootRepackage {
+    mainClass = 'com.init.AppBooter'
+}

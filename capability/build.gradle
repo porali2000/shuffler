@@ -1,0 +1,4 @@
+dependencies{
+    compile project(':models')
+    compile project(':persistence')
+}
