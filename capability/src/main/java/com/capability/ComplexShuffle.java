@@ -35,19 +35,23 @@ public class ComplexShuffle implements Shuffle {
             //Rifle shuffle
             cards = rifleShuffle(cards.subList(0, (cards.size() / 2)), cards.subList(cards.size() / 2, cards.size()));
 
-            //Make the split
-            int randomSplitPoint = random.nextInt(52); //selecting a random number to split the deck of cards
-            List<Card> secondHalf = cards.subList(randomSplitPoint, cards.size());
-            List<Card> firstHalf = cards.subList(0, randomSplitPoint);
+            int randomShuffleTimes = 7 + random.nextInt(3);
+            for (int i = 0; i < randomShuffleTimes; i++){
 
-            //Keep splitting the cards
-            secondHalf = recursiveSplit(secondHalf);
+                //Make the split
+                int randomSplitPoint = random.nextInt(52); //selecting a random number to split the deck of cards
+                List<Card> secondHalf = cards.subList(randomSplitPoint, cards.size());
+                List<Card> firstHalf = cards.subList(0, randomSplitPoint);
 
-            //Stack the splits bottom to top
-            List<Card> tempCards = new ArrayList<>();
-            tempCards.addAll(secondHalf);
-            tempCards.addAll(firstHalf);
-            cards = tempCards;
+                //Keep splitting the cards
+                secondHalf = recursiveSplit(secondHalf);
+
+                //Stack the splits bottom to top
+                List<Card> tempCards = new ArrayList<>();
+                tempCards.addAll(secondHalf);
+                tempCards.addAll(firstHalf);
+                cards = tempCards;
+            }
 
             //Do Riffle Shuffle
             cards = rifleShuffle(cards.subList(0, (cards.size() / 2)), cards.subList(cards.size() / 2, cards.size()));

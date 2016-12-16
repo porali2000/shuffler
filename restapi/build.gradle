@@ -1,5 +1,4 @@
 dependencies{
-    compile project(':models')
     compile project(':capability')
     compile('io.springfox:springfox-swagger-ui:2.2.2')
     compile('io.springfox:springfox-swagger2:2.2.2')

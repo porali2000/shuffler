@@ -39,6 +39,9 @@ public class GamingServiceImpl implements GamingService{
     public boolean putNewNamedDeck(String deckName) {
         if(StringUtils.isEmpty(deckName))
         return false;
+        if(null != this.fetch.fetchDeckWithName(deckName)){
+            throw new RuntimeException("Deck already exist");
+        }
         create.createStandardDeckWithName(deckName);
         return true;
     }

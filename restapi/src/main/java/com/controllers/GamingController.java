@@ -26,7 +26,7 @@ public class GamingController {
             this.gamingService.putNewNamedDeck(deckName);
             return "OK";
         } catch (Exception e) {
-            return "Failure";
+            throw new RuntimeException(e);
         }
     }
 
